@@ -23,6 +23,7 @@
 		<property name="name"  value="Circle-Name"></property>
 	</bean>
 	
+	<context:component-scan base-package="com.tap.backend.aop." />
 	<bean class="com.tap.backend.aop.LogingAspect"></bean>
 	
 </beans>
