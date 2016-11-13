@@ -11,8 +11,6 @@ import com.tap.backend.service.UserService;
 public class UserServiceImpl implements UserService {
 
 	@Autowired UserDAO userDAO;
-	
-	@Override
-	public User save(User user) { return userDAO.save(user); }
 
+	public User save(User user) { return userDAO.save(user); }
 }
