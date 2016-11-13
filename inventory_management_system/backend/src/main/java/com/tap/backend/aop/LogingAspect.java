@@ -1,14 +1,28 @@
 package com.tap.backend.aop;
 
+import org.aspectj.lang.JoinPoint;
+import org.aspectj.lang.annotation.After;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
-import org.aspectj.lang.annotation.Pointcut;
 
 @Aspect
 public class LogingAspect {
 
-	@Pointcut("execution(public String getName())")
-	public void loggingAspect(){
-		System.out.println("This is default advise");
+	@Before("execution(* com.tap.backend.aop.Circle.getName(..))")
+	public void logBefore(JoinPoint joinPoint) {
+
+		System.out.println("logBefore() is running!");
+		System.out.println("hijacked : " + joinPoint.getSignature().getName());
+		System.out.println("******");
 	}
+	
+	@After("execution(* com.tap.backend.aop.Circle.getName(..))")
+	//@After("execution(* get*(..)")
+	public void logAfter(JoinPoint joinPoint) {
+
+		System.out.println("logAfter() is running!");
+		System.out.println("hijacked : " + joinPoint.getSignature().getName());
+		System.out.println("******");
+	}
+
 }
